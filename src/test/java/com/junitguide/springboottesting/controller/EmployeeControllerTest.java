@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Optional;
 
 @WebMvcTest
-public class EmployeeControllerTest {
+class EmployeeControllerTest {
 	
     @Autowired
     private MockMvc mockMvc;
