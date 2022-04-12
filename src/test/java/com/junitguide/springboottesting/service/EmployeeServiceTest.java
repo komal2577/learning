@@ -16,6 +16,7 @@ import com.junitguide.springboottesting.model.Employee;
 import com.junitguide.springboottesting.repository.EmployeeRepository;
 import com.junitguide.springboottesting.service.impl.EmployeeServiceImpl;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
@@ -86,9 +87,7 @@ public class EmployeeServiceTest {
         given(employeeRepository.findAll()).willReturn(List.of(employee,employee1));
 
         List<Employee> employeeList = employeeServiceImpl.getAllEmployees();
-
-        assertThat(employeeList).isNotNull();
-        assertThat(employeeList.size()).isEqualTo(2);
+        assertThat(employeeList).isNotNull().hasSize(2);
     }
     
     @DisplayName("JUnit test for getAllEmployyes in case of exception")
@@ -109,10 +108,11 @@ public class EmployeeServiceTest {
         given(employeeRepository.findById(1L)).willReturn(Optional.of(employee));
 
         // when
-        Employee savedEmployee = employeeServiceImpl.getEmployeeById(employee.getId()).get();
+        Employee employeeDetail = employeeServiceImpl.getEmployeeById(employee.getId()).get();
 
         // then
-        assertThat(savedEmployee).isNotNull();
+        assertThat(employeeDetail).isNotNull();
+        assertEquals("Komal", employeeDetail.getFirstName());
 
     }
     

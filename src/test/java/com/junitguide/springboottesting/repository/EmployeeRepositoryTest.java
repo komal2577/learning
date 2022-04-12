@@ -70,5 +70,18 @@ public class EmployeeRepositoryTest {
 	         Employee employeeDB = employeeRepository.findByEmail(employee.getEmail()).get();
 	         assertThat(employeeDB).isNotNull();
 	     }
+	     
+	     @Test
+	     public void givenEmployeeEmail_whenFindById_thenReturnEmployeeObject(){
+	       
+	         Employee employee = Employee.builder()
+	                 .firstName("Ramesh")
+	                 .lastName("Fadatare")
+	                 .email("ramesh@gmail,com")
+	                 .build();
+	         employeeRepository.save(employee);
+	         Employee employeeDB = employeeRepository.findById(employee.getId()).get();
+	         assertThat(employeeDB).isNotNull();
+	     }
 
 }
