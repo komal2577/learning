@@ -30,7 +30,7 @@ public class EmployeeRepositoryTest {
 	        Employee savedEmployee = employeeRepository.save(employee);
 
 	        assertThat(savedEmployee).isNotNull();
-	        assertThat(savedEmployee.getId()).isGreaterThan(0);
+	        assertThat(savedEmployee.getId()).isPositive();
 	        assertEquals("Komal", savedEmployee.getFirstName());       
 	    }
 	 
