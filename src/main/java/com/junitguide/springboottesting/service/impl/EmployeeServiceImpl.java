@@ -29,8 +29,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 	@Override
-	public List<Employee> getAllEmployees() throws Exception {
-		List<Employee> employeeList = new ArrayList();
+	public List<Employee> getAllEmployees() throws ResourceNotFoundException {
+		List<Employee> employeeList = new ArrayList<>();
 		try {
 			employeeList = employeeRepository.findAll();
 		}catch(Exception e) {
@@ -39,14 +39,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeList;
 	}
 
-	/*
-	 * @Override public Optional<Employee> getEmployeeById(long id) { // TODO
-	 * Auto-generated method stub Optional<Employee> employee =
-	 * employeeRepository.findById(id); //System.out.println(employee.toString());
-	 * if(employee.isEmpty()){ throw new
-	 * ResourceNotFoundException("Employee not found with id :" + id); } return
-	 * employee; }
-	 */
+
 	
     @Override
     public Optional<Employee> getEmployeeById(long id) {

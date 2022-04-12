@@ -52,7 +52,7 @@ class EmployeeControllerTest {
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(employee)));
 
-        response .andExpect(jsonPath("$.firstName",
+        response.andExpect(jsonPath("$.firstName",
                         is(employee.getFirstName())))
                 .andExpect(jsonPath("$.lastName",
                         is(employee.getLastName())))

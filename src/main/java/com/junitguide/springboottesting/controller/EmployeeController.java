@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.junitguide.springboottesting.exception.ResourceNotFoundException;
@@ -35,7 +33,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping
-	public List<Employee> getAllEmployees() throws Exception {
+	public List<Employee> getAllEmployees() throws ResourceNotFoundException {
 		return employeeService.getAllEmployees();
 	}
 
@@ -46,17 +44,6 @@ public class EmployeeController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
-	 
-	 
-		/*
-		 * @PutMapping("{id}") public ResponseEntity<Employee>
-		 * updateEmployee(@PathVariable("id") long employeeId,
-		 * 
-		 * @RequestBody Employee employee){ Employee updatedEmployee =
-		 * employeeService.updateEmployee(employeeId,employee); return new
-		 * ResponseEntity<>(updatedEmployee, HttpStatus.OK); }
-		 */
-	 
 	 
 	    @PutMapping("{id}")
 	    public ResponseEntity<Employee> updateEmployee(@PathVariable("id") long employeeId,
